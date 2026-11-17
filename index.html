@@ -45,12 +45,12 @@
     .wrap {
       width: min(1480px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 36px 0 72px;
+      padding: 28px 0 56px;
     }
     header {
       display: grid;
-      gap: 14px;
-      margin-bottom: 42px;
+      gap: 10px;
+      margin-bottom: 26px;
     }
     .brand {
       display: flex;
@@ -59,7 +59,7 @@
       flex-wrap: wrap;
     }
     .brand img {
-      height: 52px;
+      height: 44px;
       width: auto;
       display: block;
     }
@@ -73,7 +73,7 @@
     h1 {
       font-family: var(--pixel);
       font-weight: 700;
-      font-size: clamp(36px, 5.4vw, 72px);
+      font-size: clamp(32px, 4.6vw, 60px);
       line-height: 1;
       margin: 0;
       text-shadow: 0 0 18px rgba(63,140,255,.55), 3px 3px 0 #10225a;
@@ -86,18 +86,18 @@
       line-height: 1.45;
       margin: 0;
     }
-    section { margin: 0 0 40px; }
+    section { margin: 0 0 26px; }
     section h2 {
       font-family: var(--pixel);
       font-size: clamp(16px, 1.5vw, 20px);
       letter-spacing: .12em;
       color: var(--gold);
-      margin: 0 0 16px;
+      margin: 0 0 12px;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
     }
     .grid.tight { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
     .card {
@@ -107,9 +107,9 @@
       background: var(--panel);
       border: 2px solid var(--line);
       border-radius: 12px;
-      padding: 18px 18px 16px;
+      padding: 14px 14px 12px;
       text-decoration: none;
-      min-height: 168px;
+      min-height: 0;
       transition: border-color .2s, transform .2s, box-shadow .2s;
     }
     .card:hover, .card:focus-visible {
@@ -129,7 +129,7 @@
       align-items: baseline;
       gap: 10px;
     }
-    .emoji { font-size: 28px; line-height: 1; }
+    .emoji { font-size: 24px; line-height: 1; }
     h3 {
       font-size: clamp(18px, 1.5vw, 22px);
       margin: 0;
@@ -172,6 +172,9 @@
       font-size: 14px;
       border-top: 1px solid var(--line);
       padding-top: 18px;
+    }
+    @media (max-width: 1399px) {
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
     @media (max-width: 1100px) {
       .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
