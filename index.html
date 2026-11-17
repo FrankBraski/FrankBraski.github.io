@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>STREAM Sites · Donovan Catholic</title>
+  <meta name="description" content="A single door to Donovan STREAM leaderboards, MoneyBall opportunities, classroom apps, the video library, and school sites.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060b1d;
+      --panel: #0c1530;
+      --line: #1d2b55;
+      --ink: #eef3ff;
+      --dim: #8c9cc8;
+      --silver: #c9d3e8;
+      --gold: #ffd23f;
+      --blue: #3f8cff;
+      --pixel: "Silkscreen", "Courier New", monospace;
+      --body: "Chakra Petch", system-ui, sans-serif;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      background-image:
+        radial-gradient(ellipse at 50% -10%, #12306e 0%, transparent 55%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 4px);
+    }
+    a { color: inherit; }
+    .skip {
+      position: absolute; left: -999px; top: 0;
+    }
+    .skip:focus {
+      left: 16px; top: 16px; z-index: 10;
+      background: var(--gold); color: #0b1020;
+      padding: 8px 12px; font-weight: 700; border-radius: 6px;
+    }
+    .wrap {
+      width: min(1480px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 72px;
+    }
+    header {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 42px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+    .eyebrow {
+      font-family: var(--pixel);
+      font-size: 13px;
+      letter-spacing: .14em;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: var(--pixel);
+      font-weight: 700;
+      font-size: clamp(36px, 5.4vw, 72px);
+      line-height: 1;
+      margin: 0;
+      text-shadow: 0 0 18px rgba(63,140,255,.55), 3px 3px 0 #10225a;
+    }
+    h1 span { color: var(--silver); text-shadow: 0 0 16px rgba(201,211,232,.35), 3px 3px 0 #1a2744; }
+    .lede {
+      max-width: 46rem;
+      color: var(--silver);
+      font-size: clamp(17px, 1.6vw, 22px);
+      line-height: 1.45;
+      margin: 0;
+    }
+    section { margin: 0 0 40px; }
+    section h2 {
+      font-family: var(--pixel);
+      font-size: clamp(16px, 1.5vw, 20px);
+      letter-spacing: .12em;
+      color: var(--gold);
+      margin: 0 0 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .grid.tight { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: var(--panel);
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 18px 16px;
+      text-decoration: none;
+      min-height: 168px;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .card:hover, .card:focus-visible {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), 0 16px 40px rgba(0,0,0,.35);
+      transform: translateY(-2px);
+      outline: none;
+    }
+    .kicker {
+      font-family: var(--pixel);
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--blue);
+    }
+    .title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .emoji { font-size: 28px; line-height: 1; }
+    h3 {
+      font-size: clamp(18px, 1.5vw, 22px);
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .card p {
+      margin: 0;
+      color: var(--dim);
+      font-size: 15px;
+      line-height: 1.4;
+      flex: 1;
+    }
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .go {
+      font-family: var(--pixel);
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--silver);
+    }
+    .badge {
+      font-family: var(--pixel);
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: #0b1020;
+      background: var(--silver);
+      border-radius: 999px;
+      padding: 4px 8px;
+      white-space: nowrap;
+    }
+    footer {
+      margin-top: 28px;
+      color: var(--dim);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .wrap { width: min(1480px, calc(100% - 28px)); padding-top: 24px; }
+      .brand img { height: 40px; }
+      .grid, .grid.tight { grid-template-columns: 1fr; }
+      .card { min-height: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition: none; }
+      .card:hover, .card:focus-visible { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to sites</a>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="stream-logo-letterforms.png" width="480" height="159" alt="STREAM">
+        <div class="eyebrow">Donovan Catholic · Athens, GA</div>
+      </div>
+      <h1>STREAM <span>SITES</span></h1>
+      <p class="lede">One door to the classroom leaderboards, scholarship sign, apps, video library, and school sites. Open any card to jump in.</p>
+    </header>
+
+    <main id="main">
+      <section aria-labelledby="sec-boards">
+        <h2 id="sec-boards">Leaderboards</h2>
+        <div class="grid">
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/">
+            <div class="kicker">TOUR</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🏁</span><h3>STREAM Leaderboard Tour</h3></div>
+            <p>Auto-rotating classroom tour of every class board.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/cs1-high-scores.html">
+            <div class="kicker">CS1</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🎮</span><h3>CS1 High Scores</h3></div>
+            <p>Computer Science I Khan Academy race to the finish flag.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/cs1-code-quest.html">
+            <div class="kicker">CS1</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🗺️</span><h3>CS1 Code Quest</h3></div>
+            <p>Activity, skills, and completion quest board for CS1.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/cs1-power-board.html">
+            <div class="kicker">CS1</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">⚡</span><h3>CS1 Power Board</h3></div>
+            <p>Power-score rankings that blend mastery and time on task.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/cs1-ftcsim-grand-prix.html">
+            <div class="kicker">CS1</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🏎️</span><h3>CS1 FTCsim Grand Prix</h3></div>
+            <p>Robot-course race through Intro, Movement, Sensors, and Puzzles.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/cs1-ftcsim-pit-board.html">
+            <div class="kicker">CS1</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🛠️</span><h3>CS1 FTCsim Pit Board</h3></div>
+            <p>Pit-style progress board for CS1 FTCsim courses.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/cs1-ftcsim-chaos-mode.html">
+            <div class="kicker">CS1</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">💥</span><h3>CS1 FTCsim Chaos Mode</h3></div>
+            <p>The same FTCsim standings, with extra commentary on tap.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/cs2-high-scores.html">
+            <div class="kicker">CS2</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🔥</span><h3>CS2 High Scores</h3></div>
+            <p>Computer Science II Khan Academy race, medals, and hot streaks.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/lab102-high-scores.html">
+            <div class="kicker">LAB 102</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🧪</span><h3>Lab 102 High Scores</h3></div>
+            <p>STREAM Lab 102 Khan Academy and FTCsim high scores.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/middle-school-stream-high-scores.html">
+            <div class="kicker">MS STREAM</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🏫</span><h3>MS STREAM High Scores</h3></div>
+            <p>Middle School STREAM Khan Academy race and awards.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/vip/vip-visitors-5th-grade.html">
+            <div class="kicker">VIP</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">⭐</span><h3>VIP 5th Grade</h3></div>
+            <p>Fifth-grade VIP Day visitor board.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/vip/vip-visitors-6th-grade.html">
+            <div class="kicker">VIP</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">⭐</span><h3>VIP 6th Grade</h3></div>
+            <p>Sixth-grade VIP Day visitor board.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/leaderboards/vip/vip-visitors-combined.html">
+            <div class="kicker">VIP</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🌟</span><h3>VIP Combined</h3></div>
+            <p>Combined 5th and 6th grade VIP board, with a 6 · 5 toggle.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="sec-money">
+        <h2 id="sec-money">MoneyBall</h2>
+        <div class="grid tight">
+          <a class="card" href="https://frankbraski.github.io/STREAM-Leaderboards/moneyball/moneyball.html">
+            <div class="kicker">SIGN</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">💰</span><h3>MoneyBall Opportunities</h3></div>
+            <p>Scholarships and career opportunities, with live deadlines and QR codes.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="sec-apps">
+        <h2 id="sec-apps">Classroom Apps</h2>
+        <div class="grid tight">
+          <a class="card" href="https://frankbraski.github.io/workshop-reader/">
+            <div class="kicker">READING</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🤓</span><h3>Workshop Reader</h3></div>
+            <p>Engineering-themed phonics practice, built for a remote student.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/ftc-robot-systems-lab/">
+            <div class="kicker">FTC</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🤖</span><h3>FTC Robot Systems Lab</h3></div>
+            <p>Interactive tutorials for chassis, drivetrain, intake, shooter, and vision.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://frankbraski.github.io/StopLight/">
+            <div class="kicker">ONEACT</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🚦</span><h3>StopLight</h3></div>
+            <p>Controller home for the OneAct StopLight stage prop.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="sec-video">
+        <h2 id="sec-video">Video Library</h2>
+        <div class="grid tight">
+          <a class="card" href="https://frankbraski.github.io/stream-video-library/">
+            <div class="kicker">VIDEOS</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🎬</span><h3>STREAM Video Library</h3></div>
+            <p>Class video library organized as a tag map.</p>
+            <div class="meta"><span class="go">OPEN →</span></div>
+          </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="sec-school">
+        <h2 id="sec-school">School Sites</h2>
+        <div class="grid tight">
+          <a class="card" href="https://sites.google.com/donovanathens.org/stream-team">
+            <div class="kicker">GOOGLE SITE</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🛡️</span><h3>STREAM Team</h3></div>
+            <p>Home site for the Donovan STREAM robotics team.</p>
+            <div class="meta"><span class="badge">DONOVAN LOGIN</span><span class="go">OPEN →</span></div>
+          </a>
+          <a class="card" href="https://sites.google.com/donovanathens.org/roborams/scholarship-opportunities">
+            <div class="kicker">GOOGLE SITE</div>
+            <div class="title-row"><span class="emoji" aria-hidden="true">🎓</span><h3>RoboRAMS Scholarships</h3></div>
+            <p>Robotics scholarship opportunities listed for the team.</p>
+            <div class="meta"><span class="badge">DONOVAN LOGIN</span><span class="go">OPEN →</span></div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>Donovan Catholic STREAM · A public directory of classroom sites. School sites require a Donovan login.</footer>
+  </div>
+</body>
+</html>
